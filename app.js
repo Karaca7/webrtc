@@ -5,6 +5,11 @@ app.set("view engine", "ejs");
 app.set("views", "Views");
 
 app.use("/static", express.static("static"));
+
+var cors = require("cors");
+
+app.use(cors());
+
 ///
 let http = require("http");
 

@@ -66,11 +66,14 @@ function addVideoStream(video, stream) {
 senddata = document.getElementById("senddata");
 textingdata = document.getElementById("textingdata");
 
-senddata.addEventListener("click", () => {
-  socket.emit("ortherdata", roomid, textingdata.value);
-  // console.log(textingdata.value);
-});
+// senddata.addEventListener("click", () => {
+//   socket.emit("ortherdata", roomid, textingdata.value);
+//   // console.log(textingdata.value);
+// });
 
 socket.on("getortherdata", (data) => {
   console.log(data);
+  player.seekTo(data, true);
+  player.pauseVideo();
+  player.playVideo();
 });
