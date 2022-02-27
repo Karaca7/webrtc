@@ -11,17 +11,12 @@ var cors = require("cors");
 app.use(cors());
 
 ///
-
-const { PeerServer } = require("peer");
-
-const peerServer = PeerServer({ port: 9000, path: "/webrtc" });
 let http = require("http");
 
-let Serverapp = http.createServer(app, peerServer);
+let Serverapp = http.createServer(app);
 
 let { Server } = require("socket.io");
 ///
-
 let io = new Server(Serverapp);
 
 app.get("/", (req, res) => {
