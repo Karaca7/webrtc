@@ -55,7 +55,7 @@ var getUserMedia =
 peer.on("call", function (call) {
   //it is mee
   getUserMedia(
-    { video: true, audio: true },
+    { video: true, audio: false },
     function (stream) {
       call.answer(stream); // Answer the call with an A/V stream.
       call.on("stream", function (remoteStream) {
