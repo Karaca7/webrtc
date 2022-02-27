@@ -3,7 +3,7 @@ const socket = io();
 var peer = new Peer("someid", {
   host: "localhost",
   port: 9000,
-  path: "/myapp",
+  path: "/webrtc",
 });
 console.log("1");
 peer.on("open", (id) => {
