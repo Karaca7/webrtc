@@ -15,31 +15,12 @@ socket.on("sendid", (userid) => {
     { video: true, audio: false },
     function (stream) {
       let localv = document.getElementById("myvideo");
-      localv.srcObject = stream;
-      localv.addEventListener("loadedmetadata", () => {
-        // data yüklendiinde
-        // video yu başlat
-        console.log("geçtii1");
-
-        localv.play();
-        console.log("geçtii2");
-      });
-      //addVideoStream(localv, stream);
+      addVideoStream(localv, stream);
       var call = peer.call(userid, stream);
       call.on("stream", function (remoteStream) {
         let video = document.createElement("video");
-        let remote = document.getElementById("remote");
-        remote.srcObject = stream;
-        remote.addEventListener("loadedmetadata", () => {
-          // data yüklendiinde
-          // video yu başlat
-          console.log("geçtiir1");
 
-          remote.play();
-          console.log("geçtiir2");
-        });
-
-        //
+        addVideoStream(video, remoteStream);
       });
     },
     function (err) {
@@ -55,21 +36,14 @@ var getUserMedia =
 peer.on("call", function (call) {
   //it is mee
   getUserMedia(
-    { video: true, audio: false },
+    { video: true, audio: true },
     function (stream) {
       call.answer(stream); // Answer the call with an A/V stream.
       call.on("stream", function (remoteStream) {
-        let remote = document.getElementById("remote");
-        remote.srcObject = stream;
-        remote.addEventListener("loadedmetadata", () => {
-          // data yüklendiinde
-          // video yu başlat
-          console.log("geçtiir1");
+        let video = document.createElement("video");
+        let remotev = document.getElementById("remote");
 
-          remote.play();
-          console.log("geçtiir2");
-        });
-        //
+        addVideoStream(video, remoteStream);
       });
     },
     function (err) {
