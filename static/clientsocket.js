@@ -12,7 +12,7 @@ socket.on("sendid", (userid) => {
     navigator.webkitGetUserMedia ||
     navigator.mozGetUserMedia;
   getUserMedia(
-    { video: true, audio: false },
+    { video: true, audio: true },
     function (stream) {
       let localv = document.getElementById("myvideo");
       addVideoStream(localv, stream);
