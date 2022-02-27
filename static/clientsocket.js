@@ -12,15 +12,34 @@ socket.on("sendid", (userid) => {
     navigator.webkitGetUserMedia ||
     navigator.mozGetUserMedia;
   getUserMedia(
-    { video: true, audio: true },
+    { video: true, audio: false },
     function (stream) {
       let localv = document.getElementById("myvideo");
-      addVideoStream(localv, stream);
+      localv.srcObject = stream;
+      localv.addEventListener("loadedmetadata", () => {
+        // data yüklendiinde
+        // video yu başlat
+        console.log("geçtii1");
+
+        localv.play();
+        console.log("geçtii2");
+      });
+      //addVideoStream(localv, stream);
       var call = peer.call(userid, stream);
       call.on("stream", function (remoteStream) {
         let video = document.createElement("video");
+        let remote = document.getElementById("remote");
+        remote.srcObject = stream;
+        remote.addEventListener("loadedmetadata", () => {
+          // data yüklendiinde
+          // video yu başlat
+          console.log("geçtiir1");
 
-        addVideoStream(video, remoteStream);
+          remote.play();
+          console.log("geçtiir2");
+        });
+
+        //
       });
     },
     function (err) {
@@ -36,14 +55,21 @@ var getUserMedia =
 peer.on("call", function (call) {
   //it is mee
   getUserMedia(
-    { video: true, audio: false },
+    { video: true, audio: true },
     function (stream) {
       call.answer(stream); // Answer the call with an A/V stream.
       call.on("stream", function (remoteStream) {
-        let video = document.createElement("video");
-        let remotev = document.getElementById("remote");
+        let remote = document.getElementById("remote");
+        remote.srcObject = stream;
+        remote.addEventListener("loadedmetadata", () => {
+          // data yüklendiinde
+          // video yu başlat
+          console.log("geçtiir1");
 
-        addVideoStream(video, remoteStream);
+          remote.play();
+          console.log("geçtiir2");
+        });
+        //
       });
     },
     function (err) {
