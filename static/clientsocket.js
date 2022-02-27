@@ -1,6 +1,10 @@
 roomid = document.getElementById("roomid").innerText;
 const socket = io();
-var peer = new Peer();
+var peer = new Peer("someid", {
+  secure: true,
+  host: "demowebrtcapp.herokuapp.com",
+  port: 443,
+});
 console.log("1");
 peer.on("open", (id) => {
   socket.emit("getroom", roomid, id);
@@ -15,6 +19,7 @@ socket.on("sendid", (userid) => {
     { video: true, audio: false },
     function (stream) {
       let localv = document.getElementById("myvideo");
+
       addVideoStream(localv, stream);
       var call = peer.call(userid, stream);
       call.on("stream", function (remoteStream) {
@@ -41,8 +46,6 @@ peer.on("call", function (call) {
       call.answer(stream); // Answer the call with an A/V stream.
       call.on("stream", function (remoteStream) {
         let video = document.createElement("video");
-        let remotev = document.getElementById("remote");
-
         addVideoStream(video, remoteStream);
       });
     },
