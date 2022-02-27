@@ -4,7 +4,11 @@ The feature I want to see on the patika, you may want to learn with your friends
 
 video for better understanding --> https://www.youtube.com/watch?v=LbFPlam-FIE
 
-## Note
+## Note 1
+
+You have to manually share the url of the room you created with the other user
+
+## Note 2
 
 When you run it in developer mode
 
@@ -72,6 +76,7 @@ nodemon app.js -- requires  npm i nodemon --save
 
 ## Next Version
 
+0. An invitation link will be sent for the new user to join the room.
 1. Pause, play (in-group)
 2. All colleagues' scores will be transferred when they complete the lesson.
 3. audio and video on, off.
