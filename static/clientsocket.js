@@ -1,6 +1,6 @@
 roomid = document.getElementById("roomid").innerText;
 const socket = io();
-var peer = new Peer(roomid);
+var peer = new Peer();
 console.log("1");
 peer.on("open", (id) => {
   socket.emit("getroom", roomid, id);
@@ -15,7 +15,6 @@ socket.on("sendid", (userid) => {
     { video: true, audio: false },
     function (stream) {
       let localv = document.getElementById("myvideo");
-
       addVideoStream(localv, stream);
       var call = peer.call(userid, stream);
       call.on("stream", function (remoteStream) {
