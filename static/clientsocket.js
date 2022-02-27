@@ -41,6 +41,8 @@ peer.on("call", function (call) {
       call.answer(stream); // Answer the call with an A/V stream.
       call.on("stream", function (remoteStream) {
         let video = document.createElement("video");
+        let remotev = document.getElementById("remote");
+
         addVideoStream(video, remoteStream);
       });
     },
