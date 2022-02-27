@@ -1,9 +1,10 @@
 roomid = document.getElementById("roomid").innerText;
 const socket = io();
-var peer = new Peer("someid", {
-  host: "localhost",
-  port: 9000,
-  path: "/webrtc",
+var peer = new Peer({
+  key: "peerjs",
+  host: "demowebrtcapp.herokuapp.com",
+  secure: true,
+  port: 443,
 });
 console.log("1");
 peer.on("open", (id) => {
