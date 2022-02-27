@@ -1,9 +1,6 @@
 const express = require("express");
 let app = express();
 
-var PeerServer = require("peer").PeerServer;
-var server = PeerServer({ port: 443, path: "/" });
-
 app.set("view engine", "ejs");
 app.set("views", "Views");
 
