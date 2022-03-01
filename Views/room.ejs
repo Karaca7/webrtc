@@ -6,52 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
+    <link rel="stylesheet" href="/static/css/style.css" />
   </head>
-  <style>
-    #videoplayer {
-      position: relative;
-    }
 
-    #senddata {
-      margin-left: 40%;
-    }
-    .container {
-      position: relative;
-      width: 30%;
-      /* background-color: brown; */
-      margin-left: 37%;
-    }
-    h1 {
-      margin-left: 50%;
-    }
-    #vids {
-      margin-left: 37%;
-      width: 30%;
-      /* background-color: green; */
-      position: relative;
-    }
-    #videoGrid > video {
-      height: 20vh;
-      width: 30%;
-      margin-left: 2%;
-    }
-    #wrapper {
-      margin-left: 30%;
-    }
-  </style>
   <body>
     <h1>Patika Dev</h1>
     <p id="roomid"><%= roomid %></p>
     <div class="container">
       <div id="videoplayer"></div>
-      <button id="senddata">Arkadaşınla videoyu paylaş</button>
+      <button id="share">Arkadaşınla videoyu paylaş</button>
+      <button id="pause">Videoyu durdur</button>
+      <button id="play">Devam ettir</button>
     </div>
 
     <div id="vids">
       <div id="wrapper">
-        <video id="myvideo" style="background-color: yellow"></video>
+        <video
+          id="myvideo"
+          muted="muted"
+          style="background-color: yellow"
+        ></video>
         <div id="videoGrid"></div>
-        <video id="remote"></video>
+        <video id="remote" muted="muted"></video>
       </div>
     </div>
 

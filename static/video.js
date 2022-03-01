@@ -60,10 +60,36 @@ function getcurrentTime() {
 function setcurrentTime(time) {
   player.seekTo(time, true);
 }
-buton = document.getElementById("senddata");
-buton.addEventListener("click", () => {
-  senddata();
+
+share = document.getElementById("share");
+share.addEventListener("click", () => {
+  nowtime = player.getCurrentTime();
+  nowtime = player.seekTo(nowtime, true);
+  nowtime = player.getCurrentTime();
+
+  senddata("share");
+  player.pauseVideo();
+  player.playVideo();
 });
+
+pause = document.getElementById("pause");
+pause.addEventListener("click", () => {
+  player.pauseVideo();
+  senddata("pause");
+});
+
+playz = document.getElementById("play");
+playz.addEventListener("click", () => {
+  player.playVideo();
+
+  senddata("play");
+});
+
+function senddata(userevent) {
+  socket.emit("ortherdata", roomid, userevent);
+}
+
+/*
 function senddata() {
   nowtime = player.getCurrentTime();
   nowtime = player.seekTo(nowtime, true);
@@ -73,3 +99,4 @@ function senddata() {
   player.pauseVideo();
   player.playVideo();
 }
+*/

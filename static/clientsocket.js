@@ -12,7 +12,7 @@ socket.on("sendid", (userid) => {
     navigator.webkitGetUserMedia ||
     navigator.mozGetUserMedia;
   getUserMedia(
-    { video: true, audio: false },
+    { video: true, audio: true },
     function (stream) {
       let localv = document.getElementById("myvideo");
       addVideoStream(localv, stream);
@@ -36,7 +36,7 @@ var getUserMedia =
 peer.on("call", function (call) {
   //it is mee
   getUserMedia(
-    { video: true, audio: false },
+    { video: true, audio: true },
     function (stream) {
       call.answer(stream); // Answer the call with an A/V stream.
       call.on("stream", function (remoteStream) {
@@ -71,8 +71,31 @@ textingdata = document.getElementById("textingdata");
 // });
 
 socket.on("getortherdata", (data) => {
+  messagereciver(data);
+});
+
+function messagereciver(data) {
+  if (data == "share") {
+    player.seekTo(data, true);
+    player.pauseVideo();
+    player.playVideo();
+    console.log("share1");
+  }
+  if (data == "pause") {
+    player.pauseVideo();
+    console.log("pause2");
+  }
+  if (data == "play") {
+    player.playVideo();
+
+    console.log("play3");
+  }
+}
+/*
+socket.on("getortherdata", (data) => {
   console.log(data);
   player.seekTo(data, true);
   player.pauseVideo();
   player.playVideo();
 });
+*/

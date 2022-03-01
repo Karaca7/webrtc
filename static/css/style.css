@@ -1,0 +1,30 @@
+#videoplayer {
+  position: relative;
+}
+
+#senddata {
+  margin-left: 40%;
+}
+.container {
+  position: relative;
+  width: 40%;
+  /* background-color: brown; */
+  margin-left: 37%;
+}
+h1 {
+  margin-left: 50%;
+}
+#vids {
+  margin-left: 37%;
+  width: 30%;
+  /* background-color: green; */
+  position: relative;
+}
+#videoGrid > video {
+  height: 20vh;
+  width: 30%;
+  margin-left: 2%;
+}
+#wrapper {
+  margin-left: 30%;
+}
