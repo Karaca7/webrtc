@@ -1,12 +1,12 @@
 # Real Time Communication
 
 The feature I want to see on the patika, you may want to learn with your friends from a distance. We use "RTC" technologies for this. Current features. user video and audio sharing . watch video with friend feature.
-
+https://demowebrtcapp.herokuapp.com/ --> you can try
 video for better understanding --> https://www.youtube.com/watch?v=LbFPlam-FIE
 
 ## Note 1
 
-You have to manually share the url of the room you created with the other user
+This demo does not include the ability to connect you directly to someone else. for this you have to manually share the url address after you set up the room.
 
 ## Note 2
 

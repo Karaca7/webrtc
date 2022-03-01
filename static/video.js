@@ -1,33 +1,3 @@
-/*
-class Videoplayer {
-  constructor() {
-    this.tag = document.createElement("script");
-    this.tag.src = "https://www.youtube.com/iframe_api";
-    this.firstScriptTag = document.getElementsByTagName("script")[0];
-    this.firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-    this.player;
-    function onYouTubeIframeAPIReady() {
-        player = new YT.Player("videoplayer", {
-          height: "390",
-          width: "640",
-          videoId: "nqabWPd90bU", // this will change
-          playerVars: {
-            playsinline: 1,
-          },
-        });
-      }
-
-  }
-
-   gettime() {
-    player.getCurrentTime();
-  }
-  
-   settime(time) {
-    player.setCurrentTime(time, true);
-  }
-}
-*/
 var tag = document.createElement("script");
 
 tag.src = "https://www.youtube.com/iframe_api";
@@ -52,8 +22,6 @@ let lasttime;
 let nowtime;
 
 function getcurrentTime() {
-  // console.log(player.getDuration())  total
-
   console.log(player.getCurrentTime());
 }
 
@@ -88,15 +56,3 @@ playz.addEventListener("click", () => {
 function senddata(userevent, time) {
   socket.emit("ortherdata", roomid, userevent, time);
 }
-
-/*
-function senddata() {
-  nowtime = player.getCurrentTime();
-  nowtime = player.seekTo(nowtime, true);
-  nowtime = player.getCurrentTime();
-
-  socket.emit("ortherdata", roomid, nowtime);
-  player.pauseVideo();
-  player.playVideo();
-}
-*/

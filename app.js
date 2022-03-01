@@ -36,8 +36,6 @@ io.on("connection", (socket) => {
   console.log("new socket fatheer");
 
   socket.on("getroom", (roomid, userid) => {
-    // console.log("userid:" + userid);
-    // console.log("room:" + roomid);
     socket.join(roomid);
     io.sockets.in(roomid).emit("sendid", userid);
   });
