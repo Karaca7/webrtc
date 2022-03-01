@@ -70,25 +70,23 @@ textingdata = document.getElementById("textingdata");
 //   // console.log(textingdata.value);
 // });
 
-socket.on("getortherdata", (data) => {
-  messagereciver(data);
+socket.on("getortherdata", (data, time) => {
+  messagereciver(data, time);
 });
 
-function messagereciver(data) {
+function messagereciver(data, time) {
   if (data == "share") {
-    player.seekTo(data, true);
+    player.seekTo(time, true);
     player.pauseVideo();
     player.playVideo();
-    console.log("share1");
+
+    console.log(time);
   }
   if (data == "pause") {
     player.pauseVideo();
-    console.log("pause2");
   }
   if (data == "play") {
     player.playVideo();
-
-    console.log("play3");
   }
 }
 /*

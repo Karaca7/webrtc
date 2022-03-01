@@ -49,7 +49,7 @@ function onYouTubeIframeAPIReady() {
 }
 
 let lasttime;
-let now;
+let nowtime;
 
 function getcurrentTime() {
   // console.log(player.getDuration())  total
@@ -66,8 +66,8 @@ share.addEventListener("click", () => {
   nowtime = player.getCurrentTime();
   nowtime = player.seekTo(nowtime, true);
   nowtime = player.getCurrentTime();
-
-  senddata("share");
+  console.log("thiiis sending now time:" + nowtime);
+  senddata("share", nowtime);
   player.pauseVideo();
   player.playVideo();
 });
@@ -75,18 +75,18 @@ share.addEventListener("click", () => {
 pause = document.getElementById("pause");
 pause.addEventListener("click", () => {
   player.pauseVideo();
-  senddata("pause");
+  senddata("pause", null);
 });
 
 playz = document.getElementById("play");
 playz.addEventListener("click", () => {
   player.playVideo();
 
-  senddata("play");
+  senddata("play", null);
 });
 
-function senddata(userevent) {
-  socket.emit("ortherdata", roomid, userevent);
+function senddata(userevent, time) {
+  socket.emit("ortherdata", roomid, userevent, time);
 }
 
 /*

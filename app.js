@@ -42,10 +42,10 @@ io.on("connection", (socket) => {
     io.sockets.in(roomid).emit("sendid", userid);
   });
 
-  socket.on("ortherdata", (roomid, ortherdata) => {
+  socket.on("ortherdata", (roomid, ortherdata, time) => {
     console.log(ortherdata);
     console.log("roomid:" + roomid);
-    io.sockets.in(roomid).emit("getortherdata", ortherdata);
+    io.sockets.in(roomid).emit("getortherdata", ortherdata, time);
   });
 });
 
