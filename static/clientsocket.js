@@ -1,8 +1,9 @@
 roomid = document.getElementById("roomid").innerText;
 const socket = io();
 var peer = new Peer();
-
+let globalid;
 peer.on("open", (id) => {
+  globalid = id;
   socket.emit("getroom", roomid, id);
 });
 
@@ -43,6 +44,7 @@ peer.on("call", function (call) {
       call.answer(stream); // Answer the call with an A/V stream.
       call.on("stream", function (remoteStream) {
         let video2 = document.createElement("video");
+        video2.id = globalid;
         addVideoStream(video2, remoteStream);
       });
     },
@@ -51,6 +53,22 @@ peer.on("call", function (call) {
     }
   );
 });
+
+setInterval(() => {
+  console.log(globalid);
+  console.log("heey");
+
+  if (document.querySelectorAll(`[id='${globalid}']`).length > 1) {
+    element = document.querySelectorAll(`[id='${globalid}']`);
+
+    for (var i = 0; i < element.length; i++) {
+      if (document.querySelectorAll(`[id='${globalid}']`).length < 2) {
+        break;
+      }
+      element[i].remove();
+    }
+  }
+}, 9000);
 
 videoGrid = document.getElementById("videoGrid");
 
