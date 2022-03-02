@@ -6,7 +6,7 @@ peer.on("open", (id) => {
   globalid = id;
   socket.emit("getroom", roomid, id);
 });
-
+//dds
 socket.on("sendid", (userid) => {
   var getUserMedia =
     navigator.getUserMedia ||
